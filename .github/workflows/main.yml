@@ -7,14 +7,15 @@ jobs:
      name: Test License
      runs-on: ubuntu-latest
      steps:
-        - run: ls
+        - name: Check out repository
+          uses: actions/checkout@v4
+          
+        - name: Test license
         - uses: game-ci/unity-test-runner@v4
           env:
              UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
              UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
              UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          with:
-            projectPath: P1TeamCapybara
 
 
 
@@ -43,8 +44,6 @@ jobs:
 #           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 #           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
 #           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-#         with:
-#           githubToken: ${{ secrets.GITHUB_TOKEN }}
 
 #       # Build
 #       - name: Build project
